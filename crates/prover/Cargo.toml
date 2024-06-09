@@ -1,0 +1,32 @@
+[package]
+name = "prover"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+anyhow = "1.0.79"
+axum = { version = "0.7.3", features = ["macros"] }
+clap = { version = "4.4.13", features = ["derive"] }
+serde_json = "1.0.111"
+tokio = { version = "1.35.1", features = ["full"] }
+tower = { version = "0.4.13", features = ["timeout"] }
+tower-http = { version = "0.5.0", features = ["cors"] }
+tracing = "0.1.40"
+utils = { path = "../utils" }
+constants = { path = "../constants" }
+oreo_errors = { path = "../oreo_errors" }
+db_handler = { path = "../db_handler" }
+networking = { path = "../networking" }
+ironfish_rust = { package = "ironfish", git = "https://github.com/oreoslabs/ironfish-optimize.git", branch = "feature/support-wasm" }
+ironfish_zkp = { package = "ironfish_zkp", git = "https://github.com/oreoslabs/ironfish-optimize.git", branch = "feature/support-wasm" }
+blst = "=0.3.10"
+blstrs = { version = "0.6.0", features = ["portable"] }
+bellperson = { git = "https://github.com/iron-fish/bellperson.git", branch = "blstrs", features = [
+    "groth16",
+] }
+rand = "0.8.5"
+getrandom = { version = "0.2", features = ["js"] }
+rand_core = { version = "0.6.4", features = ["getrandom"] }
+rayon = "1.5"

@@ -1,45 +1,13 @@
-[package]
-name = "ironfish-server"
-version = "0.1.1"
-edition = "2021"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
-[dependencies]
-anyhow = "1.0.79"
-axum = { version = "0.7.3", features = ["macros"] }
-clap = { version = "4.4.13", features = ["derive"] }
-redis = { version = "0.25.2", features = ["tokio-comp", "tokio-native-tls-comp"] }
-serde = { version = "1.0.195", features = ["derive"] }
-serde_json = "1.0.111"
-substring = "1.4.5"
-thiserror = "1.0.56"
-tokio = { version = "1.35.1", features = ["full"] }
-tower = { version = "0.4.13", features = ["timeout"] }
-tower-http = { version = "0.5.0", features = ["cors"] }
-tracing = "0.1.40"
-tracing-subscriber = { version = "0.3.18", features = ["env-filter"] }
-ureq = { version = "2.9.1", features = ["json"] }
-ironfish_rust = { package = "ironfish", git = "https://github.com/oreoslabs/ironfish-optimize.git", branch = "feature/support-wasm"}
-# ironfish_rust = { package = "ironfish", path = "../ironfish/ironfish-rust"}
-ironfish_zkp = { package = "ironfish_zkp", git = "https://github.com/oreoslabs/ironfish-optimize.git", branch = "feature/support-wasm"}
-# ironfish_zkp = { package = "ironfish_zkp", path = "../ironfish/ironfish-zkp"}
-blst = "=0.3.10"
-blstrs = { version = "0.6.0", features = ["portable"] }
-bellperson = { git = "https://github.com/iron-fish/bellperson.git", branch = "blstrs", features = ["groth16"] }
-rand = "0.8.5"
-getrandom = { version = "0.2", features = ["js"] }
-rand_core = { version = "0.6.4", features = ["getrandom"] }
-rayon = "1.5"
-serde_yaml = "0.9.14"
-async-trait = "0.1.79"
-sqlx = { version = "0.6.2", features = ["runtime-tokio-rustls", "postgres"] }
-futures = { version = "0.3.30", features = ["futures-executor"] }
-
-[dev-dependencies]
-reqwest = { version = "0.11", default-features = false, features = ["json", "rustls-tls"] }
-jubjub = { git = "https://github.com/oreoslabs/jubjub.git", branch = "blstrs" }
-zcash_primitives = { git = "https://github.com/oreoslabs/librustzcash.git", branch = "blstrs", package = "zcash_primitives" }
-ff = "0.12.0"
-group = "0.12.0"
-sqlx-db-tester = "0.1.1"
+[workspace]
+resolver = "2"
+members = [
+    "crates/networking",
+    "crates/constants",
+    "crates/db_handler",
+    "crates/oreo_errors",
+    "crates/server",
+    "crates/utils",
+    "crates/prover",
+    "crates/dworker",
+    "crates/dservice",
+]
